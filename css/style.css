@@ -1,60 +1,34 @@
+/* Import Tailwind CSS */
+@import "https://cdn.tailwindcss.com";
+
 :root {
     --bg-color: #f4f1eb; /* Off-white canvas */
     --primary-navy: #1a2a45; /* Deep Navy */
     --primary-gold: #c09553; /* Antique Gold */
     --text-color: #3e3029; /* Dark brown */
 }
-/* Lock the body and enable horizontal scroll on the container */
+
+/* Base styles for both desktop and mobile */
 html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* CRITICAL for horizontal scroll */
     font-family: 'Nanum Myeongjo', serif;
     background-color: var(--primary-navy);
 }
+
 h1, h2, h3 {
     font-family: 'Prata', serif;
     letter-spacing: 0.05em;
 }
+
 .font-script {
     font-family: 'Dancing Script', cursive;
-}
-
-#main-container {
-    width: 500vw; /* 100vw per section (5 sections) */
-    height: 100vh;
-    display: flex;
-    will-change: transform;
-    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-}
-.page {
-    width: 100vw;
-    height: 100vh;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4rem;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Page specific styles */
-.page-home {
-    background-color: var(--primary-navy);
-    color: var(--bg-color);
-}
-.page-couple, .page-events, .page-rsvp, .page-gallery {
-    background-color: var(--bg-color);
 }
 
 .gold-pattern-bg {
     background-image: url("data:image/svg+xml,%3Csvg width='84' height='48' viewBox='0 0 84 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h12v12H0V0zm24 24h12v12H24V24zm48 24h12v12H72V48zM72 0h12v12H72V0zM0 24h12v12H0V24zM24 0h12v12H24V0z' fill='%23c09553' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
-/* Animation classes */
 .content-wrapper {
     transition: opacity 1.2s ease, transform 1.2s ease;
     opacity: 0;
@@ -68,58 +42,152 @@ h1, h2, h3 {
     transition-delay: 0.3s;
 }
 
-/* Modern card styles */
 .couple-card, .event-card {
     background: rgba(255,255,255,0.4);
     border: 1px solid rgba(255,255,255,0.6);
     backdrop-filter: blur(5px);
     transition: all 0.4s ease;
 }
- .couple-card:hover, .event-card:hover {
-    background: rgba(255,255,255,0.7);
-    transform: scale(1.03);
-    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.2);
-}
 .photo-frame {
     border: 8px solid white;
     box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
 }
 
-/* Navigation dots */
-#nav-dots {
-    position: fixed;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    z-index: 100;
+/* DESKTOP-SPECIFIC STYLES (Horizontal Scroll) */
+@media screen and (min-width: 769px) {
+    html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* CRITICAL for horizontal scroll */
+    }
+
+    #main-container {
+        width: 500vw; /* 100vw per section (5 sections) */
+        height: 100vh;
+        display: flex;
+        will-change: transform;
+        transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .page {
+        width: 100vw;
+        height: 100vh;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .page-home { background-color: var(--primary-navy); color: var(--bg-color); }
+    .page-couple, .page-events, .page-rsvp, .page-gallery { background-color: var(--bg-color); }
+
+    .couple-card:hover, .event-card:hover {
+        background: rgba(255,255,255,0.7);
+        transform: scale(1.03);
+        box-shadow: 0 20px 40px -15px rgba(0,0,0,0.2);
+    }
+
+    #nav-dots {
+        position: fixed;
+        right: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        z-index: 100;
+    }
+
+    .nav-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+    
+    .page-couple.active ~ #nav-dots .nav-dot,
+    .page-events.active ~ #nav-dots .nav-dot,
+    .page-rsvp.active ~ #nav-dots .nav-dot,
+    .page-gallery.active ~ #nav-dots .nav-dot {
+        background-color: rgba(0,0,0,0.1);
+        border-color: rgba(0,0,0,0.3);
+    }
+
+    .nav-dot.active {
+        background-color: white !important;
+        transform: scale(1.4);
+    }
+    
+    .page-couple.active ~ #nav-dots .nav-dot.active,
+    .page-events.active ~ #nav-dots .nav-dot.active,
+    .page-rsvp.active ~ #nav-dots .nav-dot.active,
+    .page-gallery.active ~ #nav-dots .nav-dot.active {
+         background-color: var(--primary-gold) !important;
+         border-color: var(--primary-gold) !important;
+    }
 }
-.nav-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.4s ease;
+
+/* MOBILE-SPECIFIC STYLES (Vertical Scroll) */
+@media screen and (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    body {
+        background-color: var(--bg-color); /* Change background for the whole page on mobile */
+    }
+
+    #main-container {
+        width: 100%;
+        height: auto;
+        display: block; /* Stack pages vertically */
+    }
+
+    .page {
+        width: 100%;
+        height: auto;
+        min-height: 100vh; /* Make each section feel like a full page */
+        flex-direction: column;
+        padding: 5rem 1.5rem;
+        /* Make content visible by default on mobile */
+        opacity: 1; 
+        transform: none;
+    }
+    .page .content-wrapper {
+        opacity: 1;
+        transform: none;
+    }
+    
+    .page-home {
+        color: var(--bg-color);
+        background-color: var(--primary-navy);
+    }
+    .page-couple, .page-events, .page-rsvp, .page-gallery {
+        background-color: var(--bg-color);
+    }
+
+    h1.font-script { font-size: 4rem; } /* Adjust font size for mobile */
+    h2 { font-size: 2.5rem; }
+
+    /* Force grids to stack */
+    .grid { display: flex; flex-direction: column; }
+    .couple-card .grid { display: flex; flex-direction: column; }
+    
+    .photo-frame {
+        margin-top: 2rem;
+    }
+
+    #nav-dots, .scroll-indicator .icon-arrow-right {
+        display: none; /* Hide horizontal scroll indicators */
+    }
+    .scroll-indicator .icon-arrow-down {
+        display: inline-block; /* Show vertical scroll indicator */
+    }
 }
-.page-couple.active ~ #nav-dots .nav-dot,
-.page-events.active ~ #nav-dots .nav-dot,
-.page-rsvp.active ~ #nav-dots .nav-dot,
-.page-gallery.active ~ #nav-dots .nav-dot {
-    background-color: rgba(0,0,0,0.1);
-    border-color: rgba(0,0,0,0.3);
-}
-.nav-dot.active {
-    background-color: white !important;
-    transform: scale(1.4);
-}
-.page-couple.active ~ #nav-dots .nav-dot.active,
-.page-events.active ~ #nav-dots .nav-dot.active,
-.page-rsvp.active ~ #nav-dots .nav-dot.active,
-.page-gallery.active ~ #nav-dots .nav-dot.active {
-     background-color: var(--primary-gold) !important;
-     border-color: var(--primary-gold) !important;
-}
+
