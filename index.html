@@ -52,7 +52,7 @@
                 <h2 class="text-5xl text-[var(--primary-navy)] mb-12">The Festivities</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <div class="event-card rounded-xl p-8">
-                        <h3 class="text-3xl text-[var(--primary-navy)] mb-2">Sangeet & Engagement</h3>
+                        <h3 class="text-3xl text-[var(--primary-navy)] mb-2">Sangeet and Engagement</h3>
                         <p class="font-semibold text-gray-700 text-sm">1st December 2025</p>
                         <p class="text-gray-500 my-4 text-sm">A night of music & dance as we kick off the festivities!</p>
                         <p class="font-semibold text-gray-800">Mumbai</p>
@@ -82,18 +82,22 @@
                     <div id="form-content">
                         <div class="mb-4">
                             <label for="name" class="block text-gray-700 font-medium mb-2 text-sm">Your Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none bg-white/50 text-sm" required>
+                            <input type="text" id="name" name="name" 
+                                maxlength="30"
+                                pattern="[A-Za-z\s]+"
+                                title="Only alphabets and spaces allowed. Max 30 characters."
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none bg-white/50 text-sm" required>
                         </div>
                         <div class="mb-4">
                             <label for="guests" class="block text-gray-700 font-medium mb-2 text-sm">Number of Guests</label>
-                            <input type="number" id="guests" name="guests" min="1" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none bg-white/50 text-sm" required>
+                            <input type="number" id="guests" name="guests" min="1" max="10" title="Enter count between 1 and 10" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none bg-white/50 text-sm" required>
                         </div>
                         <div class="mb-6">
                             <label class="block text-gray-700 font-medium mb-2 text-sm">Events You Will Grace</label>
                             <div class="space-y-2 mt-3">
-                                <div class="flex items-center"><input type="checkbox" id="sangeet" name="event" value="Sangeet" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="sangeet" class="ml-3 text-gray-700 text-sm">Sangeet & Engagement</label></div>
-                                <div class="flex items-center"><input type="checkbox" id="wedding" name="event" value="Wedding" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="wedding" class="ml-3 text-gray-700 text-sm">The Wedding</label></div>
-                                <div class="flex items-center"><input type="checkbox" id="reception" name="event" value="Reception" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="reception" class="ml-3 text-gray-700 text-sm">Indore Reception</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="sangeet" name="event" value="Sangeet" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="sangeet" class="ml-3 text-gray-700 text-sm">Sangeet & Engagement - Mumbai</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="wedding" name="event" value="Wedding" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="wedding" class="ml-3 text-gray-700 text-sm">The Wedding - Mumbai</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="reception" name="event" value="Reception" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="reception" class="ml-3 text-gray-700 text-sm">Reception - Indore</label></div>
                             </div>
                         </div>
                         <button type="submit" class="w-full bg-[var(--primary-navy)] text-white font-semibold tracking-wider py-3 px-4 rounded-md hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl">SUBMIT RSVP</button>
