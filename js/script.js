@@ -1,120 +1,126 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('main-container');
-    const pages = document.querySelectorAll('.page');
-    const navDotsContainer = document.getElementById('nav-dots');
-    const pageCount = pages.length;
-    let currentPage = 0;
-    let isScrolling = false;
+    const isMobile = window.innerWidth <= 768;
 
-    // Create nav dots
-    for(let i = 0; i < pageCount; i++) {
-        const dot = document.createElement('div');
-        dot.classList.add('nav-dot');
-        dot.dataset.index = i;
-        navDotsContainer.appendChild(dot);
-    }
-    const navDots = document.querySelectorAll('.nav-dot');
-
-    const updateActiveState = () => {
-        const scrollLeft = currentPage * window.innerWidth;
-        container.style.transform = `translateX(-${scrollLeft}px)`;
-
-        pages.forEach((page, index) => {
-            page.classList.toggle('active', index === currentPage);
-        });
-        navDots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentPage);
-        });
-    };
-
-    const handleScroll = (event) => {
-        if (isScrolling) return;
-        isScrolling = true;
-        
-        if (event.deltaY > 0) { // Scrolling down/right
-            currentPage = Math.min(pageCount - 1, currentPage + 1);
-        } else { // Scrolling up/left
-            currentPage = Math.max(0, currentPage - 1);
-        }
-        
-        updateActiveState();
-
-        setTimeout(() => {
-            isScrolling = false;
-        }, 1500); // Cooldown to prevent rapid scrolling
-    };
-    
-    const handleNavClick = (event) => {
-         if (event.target.classList.contains('nav-dot')) {
-             currentPage = parseInt(event.target.dataset.index);
-             updateActiveState();
-         }
-    }
-    
-    // Initial state
-    updateActiveState();
-    
-    window.addEventListener('wheel', handleScroll);
-    navDotsContainer.addEventListener('click', handleNavClick);
-    
     const rsvpForm = document.getElementById('rsvp-form');
-
-    const getScriptUrl = () => {
-        try {
-            if (typeof CONFIG !== 'undefined' && CONFIG.ENCODED_URL) {
-                 return atob(CONFIG.ENCODED_URL);
-            }
-            throw new Error("Configuration not found.");
-        } catch (e) {
-            console.error("Error decoding the script URL. Make sure config.js is loaded and the key is a valid Base64 string.", e);
-            return '';
-        }
-    }
-
     rsvpForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const submitButton = rsvpForm.querySelector('button[type="submit"]');
+        
+        const existingError = rsvpForm.querySelector('.form-error');
+        if(existingError) existingError.remove();
+
         submitButton.disabled = true;
-        submitButton.textContent = 'SUBMITTING...';
-
-        const scriptUrl = getScriptUrl();
-        if (!scriptUrl) {
-            alert('Configuration error. Could not submit RSVP.');
-            submitButton.disabled = false;
-            submitButton.textContent = 'SUBMIT RSVP';
-            return;
-        }
-
-        // Collect all checked event checkboxes
-        const checkedEvents = rsvpForm.querySelectorAll('input[type="checkbox"]:checked');
+        submitButton.innerHTML = `
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            SUBMITTING...`;
+        
+        const scriptURL = atob(config.encodedUrl);
         const formData = new FormData(rsvpForm);
         
-        formData.delete('event');
-        checkedEvents.forEach(checkbox => {
-            formData.append('event', checkbox.nextElementSibling.textContent);
-        });
-        
-        fetch(scriptUrl, {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.result === 'success') {
+        fetch(scriptURL, { method: 'POST', body: formData})
+            .then(response => {
+                if (response.ok) return response;
+                throw new Error('Network response was not ok.');
+            })
+            .then(() => {
                 document.getElementById('form-content').classList.add('hidden');
                 document.getElementById('rsvp-confirmation').classList.remove('hidden');
-            } else {
-                throw new Error(data.message || 'An unknown error occurred.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Sorry, there was an error submitting your RSVP. Please try again.');
-            submitButton.disabled = false;
-            submitButton.textContent = 'SUBMIT RSVP';
-        });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const errorMessage = document.createElement('p');
+                errorMessage.className = 'form-error text-red-600 text-sm mt-4 text-center';
+                errorMessage.textContent = 'Sorry, there was an error submitting your RSVP. Please try again.';
+                rsvpForm.appendChild(errorMessage);
+                
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'SUBMIT RSVP';
+            });
     });
 
+    // Disable right-clicking on the website
     document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // --- DESKTOP-ONLY LOGIC ---
+    if (!isMobile) {
+        const container = document.getElementById('main-container');
+        const pages = document.querySelectorAll('.page');
+        const navDotsContainer = document.getElementById('nav-dots');
+        const pageCount = pages.length;
+        let currentPage = 0;
+        let isScrolling = false;
+        const scrollCooldown = 1500;
+
+        // Create nav dots
+        for(let i = 0; i < pageCount; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('nav-dot');
+            dot.dataset.index = i;
+            navDotsContainer.appendChild(dot);
+        }
+        const navDots = document.querySelectorAll('.nav-dot');
+
+        const updateActiveState = () => {
+            const scrollLeft = currentPage * window.innerWidth;
+            container.style.transform = `translateX(-${scrollLeft}px)`;
+
+            pages.forEach((page, index) => {
+                page.classList.toggle('active', index === currentPage);
+            });
+            navDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentPage);
+            });
+        };
+
+        const changePage = (direction) => {
+            if (isScrolling) return;
+            isScrolling = true;
+
+            if (direction === 'next') {
+                currentPage = Math.min(pageCount - 1, currentPage + 1);
+            } else if (direction === 'prev') {
+                currentPage = Math.max(0, currentPage - 1);
+            }
+            
+            updateActiveState();
+
+            setTimeout(() => {
+                isScrolling = false;
+            }, scrollCooldown);
+        };
+
+        const handleScroll = (event) => {
+            if (event.deltaY > 0) {
+                changePage('next');
+            } else {
+                changePage('prev');
+            }
+        };
+
+        const handleKeyDown = (event) => {
+            if (event.key === 'ArrowRight') {
+                changePage('next');
+            } else if (event.key === 'ArrowLeft') {
+                changePage('prev');
+            }
+        };
+        
+        const handleNavClick = (event) => {
+             if (event.target.classList.contains('nav-dot')) {
+                 currentPage = parseInt(event.target.dataset.index);
+                 updateActiveState();
+             }
+        };
+        
+        // Initial state
+        updateActiveState();
+        
+        window.addEventListener('wheel', handleScroll);
+        window.addEventListener('keydown', handleKeyDown);
+        navDotsContainer.addEventListener('click', handleNavClick);
+    }
 });
 
