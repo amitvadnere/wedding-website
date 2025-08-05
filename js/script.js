@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = window.innerWidth <= 768;
 
+    // --- SHARED LOGIC ---
+    // RSVP Form Submission (works on both desktop and mobile)
     const rsvpForm = document.getElementById('rsvp-form');
     rsvpForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -17,9 +19,19 @@ document.addEventListener('DOMContentLoaded', () => {
             </svg>
             SUBMITTING...`;
         
-        const scriptURL = atob(config.encodedUrl);
+        // The config object is expected to be defined in js/config.js
+        const scriptURL = atob(config.encodedUrl); 
         const formData = new FormData(rsvpForm);
         
+        // Handle checkbox data
+        const checkedEvents = rsvpForm.querySelectorAll('input[type="checkbox"]:checked');
+        let eventsValue = [];
+        checkedEvents.forEach(checkbox => {
+            eventsValue.push(checkbox.parentElement.querySelector('label').textContent);
+        });
+        formData.append('events', eventsValue.join(', '));
+
+
         fetch(scriptURL, { method: 'POST', body: formData})
             .then(response => {
                 if (response.ok) return response;

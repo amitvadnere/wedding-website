@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amit & Aishwarya's Wedding</title>
-    <!-- The link to Tailwind CSS is now inside the style.css file for better organization -->
+    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,18 +27,21 @@
             </div>
         </section>
 
-        <!-- PAGE 2: OUR STORY TOGETHER -->
+        <!-- PAGE 2: MEET THE COUPLE -->
         <section id="page-2" class="page page-couple gold-pattern-bg">
             <div class="text-center content-wrapper">
-                <h2 class="text-5xl text-[var(--primary-navy)] mb-12">Our Story Together</h2>
-                <div class="max-w-4xl mx-auto couple-card rounded-xl p-8 grid md:grid-cols-2 gap-10 items-center">
-                    <div class="text-left">
-                        <h3 class="font-script text-5xl text-[var(--primary-navy)]">A New Chapter</h3>
-                        <p class="mt-4 text-sm text-gray-600 leading-relaxed">
-                            From shared glances to a lifetime of promises, our journey has been nothing short of magical. What started as a simple friendship blossomed into a love that feels like home. We can't wait to start our happily-ever-after, and we are so excited to celebrate it with you!
-                        </p>
+                <h2 class="text-5xl text-[var(--primary-navy)] mb-12">Meet The Couple</h2>
+                <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                    <div class="couple-card rounded-xl p-8 text-center">
+                        <img src="photos/amit.jpg" class="w-40 h-40 rounded-full mx-auto mb-6 photo-frame" alt="Photo of Amit">
+                        <h3 class="font-script text-5xl text-[var(--primary-navy)]">Amit Vadnere</h3>
+                        <p class="mt-4 text-sm text-gray-600 leading-relaxed">Lover of classic films, spicy food, and the one who believes every journey is better with a perfect playlist. Can't wait to start this new track with my best friend.</p>
                     </div>
-                    <img src="photos/couple.jpg" alt="Amit and Aishwarya" class="w-full h-auto rounded-lg object-cover photo-frame">
+                    <div class="couple-card rounded-xl p-8 text-center">
+                        <img src="photos/aishwarya.jpg" class="w-40 h-40 rounded-full mx-auto mb-6 photo-frame" alt="Photo of Aishwarya">
+                        <h3 class="font-script text-5xl text-[var(--primary-navy)]">Aishwarya Lonarkar</h3>
+                        <p class="mt-4 text-sm text-gray-600 leading-relaxed">Admirer of monsoon rains, a good book, and the one who always remembers the little things. Excited to write our greatest chapter yet, filled with love and laughter.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -88,9 +91,9 @@
                         <div class="mb-6">
                             <label class="block text-gray-700 font-medium mb-2 text-sm">Events You Will Grace</label>
                             <div class="space-y-2 mt-3">
-                                <div class="flex items-center"><input type="checkbox" name="event" value="Sangeet" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="sangeet" class="ml-3 text-gray-700 text-sm">Sangeet & Engagement</label></div>
-                                <div class="flex items-center"><input type="checkbox" name="event" value="Wedding" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="wedding" class="ml-3 text-gray-700 text-sm">The Wedding</label></div>
-                                <div class="flex items-center"><input type="checkbox" name="event" value="Reception" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="reception" class="ml-3 text-gray-700 text-sm">Indore Reception</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="sangeet" name="event" value="Sangeet" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="sangeet" class="ml-3 text-gray-700 text-sm">Sangeet & Engagement</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="wedding" name="event" value="Wedding" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="wedding" class="ml-3 text-gray-700 text-sm">The Wedding</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="reception" name="event" value="Reception" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="reception" class="ml-3 text-gray-700 text-sm">Indore Reception</label></div>
                             </div>
                         </div>
                         <button type="submit" class="w-full bg-[var(--primary-navy)] text-white font-semibold tracking-wider py-3 px-4 rounded-md hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl">SUBMIT RSVP</button>

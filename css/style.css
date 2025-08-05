@@ -155,9 +155,6 @@ h1, h2, h3 {
         min-height: 100vh; /* Make each section feel like a full page */
         flex-direction: column;
         padding: 5rem 1.5rem;
-        /* Make content visible by default on mobile */
-        opacity: 1; 
-        transform: none;
     }
     .page .content-wrapper {
         opacity: 1;
@@ -177,7 +174,7 @@ h1, h2, h3 {
 
     /* Force grids to stack */
     .grid { display: flex; flex-direction: column; }
-    .couple-card .grid { display: flex; flex-direction: column; }
+    .couple-card { margin-bottom: 2rem; }
     
     .photo-frame {
         margin-top: 2rem;
