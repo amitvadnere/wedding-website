@@ -171,8 +171,13 @@ h1, h2, h3 {
         background-color: var(--bg-color);
     }
 
-    .text-8xl { font-size: 4rem; } /* Adjust font size for mobile */
-    .text-5xl { font-size: 2.5rem; }
+    .text-8xl { 
+        font-size: 3rem; /* Reduced font size for mobile */
+        line-height: 1.1; /* Tighter line height for the large font */
+    }
+    .text-5xl { 
+        font-size: 2.25rem; /* Slightly reduce other large fonts too */
+    }
 
     /* Force grids to stack */
     .md\:grid-cols-2, .md\:grid-cols-3, .md\:grid-cols-4 {
