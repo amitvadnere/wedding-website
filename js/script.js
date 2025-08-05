@@ -61,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const getScriptUrl = () => {
         try {
-            if (typeof CONFIG !== 'undefined' && CONFIG.ENCODED_URL) {
-                 return atob(CONFIG.ENCODED_URL);
+            if (typeof CONFIG !== 'undefined' && process.env.GOOGLE_SCRIPT_URL) {
+                 return atob(process.env.GOOGLE_SCRIPT_URL);
             }
             throw new Error("Configuration not found.");
         } catch (e) {
