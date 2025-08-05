@@ -1,11 +1,9 @@
-/* Import Tailwind CSS */
-@import "https://cdn.tailwindcss.com";
-
+/* Base styles for both desktop and mobile */
 :root {
-    --bg-color: #f4f1eb;
-    --primary-navy: #1a2a45;
-    --primary-gold: #c09553;
-    --text-color: #3e3029;
+    --bg-color: #f4f1eb; /* Off-white canvas */
+    --primary-navy: #1a2a45; /* Deep Navy */
+    --primary-gold: #c09553; /* Antique Gold */
+    --text-color: #3e3029; /* Dark brown */
 }
 
 html, body {
@@ -30,12 +28,6 @@ h1, h2, h3 {
 
 .content-wrapper {
     transition: opacity 1.2s ease, transform 1.2s ease;
-    opacity: 0;
-    transform: translateY(50px);
-}
-.page.active .content-wrapper {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .couple-card, .event-card {
@@ -44,6 +36,7 @@ h1, h2, h3 {
     backdrop-filter: blur(5px);
     transition: all 0.4s ease;
 }
+
 .photo-frame {
     border: 8px solid white;
     box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
@@ -54,11 +47,11 @@ h1, h2, h3 {
     html, body {
         width: 100%;
         height: 100%;
-        overflow: hidden;
+        overflow: hidden; /* CRITICAL for horizontal scroll */
     }
 
     #main-container {
-        width: 500vw;
+        width: 500vw; /* 100vw per section (5 sections) */
         height: 100vh;
         display: flex;
         will-change: transform;
@@ -75,6 +68,18 @@ h1, h2, h3 {
         padding: 4rem;
         position: relative;
         overflow: hidden;
+    }
+    
+    .content-wrapper {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    .page.active .content-wrapper {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .content-wrapper > * {
+        transition-delay: 0.3s;
     }
 
     .page-home { background-color: var(--primary-navy); color: var(--bg-color); }
@@ -95,7 +100,6 @@ h1, h2, h3 {
         flex-direction: column;
         gap: 1.5rem;
         z-index: 100;
-        pointer-events: auto;
     }
 
     .nav-dot {
@@ -107,11 +111,26 @@ h1, h2, h3 {
         cursor: pointer;
         transition: all 0.4s ease;
     }
+    
+    .page-couple.active ~ #nav-dots .nav-dot,
+    .page-events.active ~ #nav-dots .nav-dot,
+    .page-rsvp.active ~ #nav-dots .nav-dot,
+    .page-gallery.active ~ #nav-dots .nav-dot {
+        background-color: rgba(0,0,0,0.1);
+        border-color: rgba(0,0,0,0.3);
+    }
 
     .nav-dot.active {
-        background-color: var(--primary-gold) !important;
-        border-color: var(--primary-gold) !important;
+        background-color: white !important;
         transform: scale(1.4);
+    }
+    
+    .page-couple.active ~ #nav-dots .nav-dot.active,
+    .page-events.active ~ #nav-dots .nav-dot.active,
+    .page-rsvp.active ~ #nav-dots .nav-dot.active,
+    .page-gallery.active ~ #nav-dots .nav-dot.active {
+         background-color: var(--primary-gold) !important;
+         border-color: var(--primary-gold) !important;
     }
 }
 
@@ -120,21 +139,22 @@ h1, h2, h3 {
     html, body {
         overflow-x: hidden;
         overflow-y: auto;
+        scroll-behavior: smooth;
     }
     body {
-        background-color: var(--bg-color);
+        background-color: var(--bg-color); /* Change background for the whole page on mobile */
     }
 
     #main-container {
         width: 100%;
         height: auto;
-        display: block;
+        display: block; /* Stack pages vertically */
     }
 
     .page {
         width: 100%;
         height: auto;
-        min-height: 100vh;
+        min-height: 100vh; /* Make each section feel like a full page */
         flex-direction: column;
         padding: 5rem 1.5rem;
     }
@@ -142,7 +162,7 @@ h1, h2, h3 {
         opacity: 1;
         transform: none;
     }
-
+    
     .page-home {
         color: var(--bg-color);
         background-color: var(--primary-navy);
@@ -151,20 +171,28 @@ h1, h2, h3 {
         background-color: var(--bg-color);
     }
 
-    h1.font-script { font-size: 4rem; }
-    h2 { font-size: 2.5rem; }
+    .text-8xl { font-size: 4rem; } /* Adjust font size for mobile */
+    .text-5xl { font-size: 2.5rem; }
 
-    .grid { display: flex; flex-direction: column; width: 100%; }
-    .couple-card { margin-bottom: 2rem; }
-
+    /* Force grids to stack */
+    .md\:grid-cols-2, .md\:grid-cols-3, .md\:grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+    .couple-card, .event-card, .gallery-image { 
+        margin-bottom: 2rem; 
+    }
+    .couple-card:last-child, .event-card:last-child {
+        margin-bottom: 0;
+    }
+    
     .photo-frame {
         margin-top: 2rem;
     }
-
+    
     #nav-dots, .scroll-indicator .icon-arrow-right {
-        display: none;
+        display: none; /* Hide horizontal scroll indicators */
     }
     .scroll-indicator .icon-arrow-down {
-        display: inline-block;
+        display: inline-block; /* Show vertical scroll indicator */
     }
 }
