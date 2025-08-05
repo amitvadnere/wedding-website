@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         submitButton.textContent = 'SUBMITTING...';
 
         const scriptUrl = getScriptUrl();
-        if (!scriptUrl || (typeof CONFIG !== 'undefined' && CONFIG.ENCODED_URL === 'YOUR_BASE64_ENCODED_URL_HERE')) {
+        if (!scriptUrl) {
             alert('Configuration error. Could not submit RSVP.');
             submitButton.disabled = false;
             submitButton.textContent = 'SUBMIT RSVP';
