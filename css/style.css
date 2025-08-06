@@ -19,6 +19,15 @@ h1, h2, h3 {
     font-family: 'Prata', serif;
     letter-spacing: 0.05em;
 }
+.oval-image {
+  width: 200px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  border-radius: 50%;
+  background-image: url('your_image.jpg'); /* Replace with your image path */
+  background-size: cover; /* Ensures the image fills the oval */
+  background-position: center; /* Centers the image within the oval */
+  overflow: hidden; /* Hides any part of the image extending beyond the oval */
+}
 
 .font-script {
     font-family: 'Dancing Script', cursive;
