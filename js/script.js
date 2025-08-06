@@ -19,11 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </svg>
                 SUBMITTING...`;
             
-            // The config object is expected to be defined in js/config.js
             const scriptURL = atob(config.encodedUrl); 
             const formData = new FormData(rsvpForm);
             
-            // Handle checkbox data
             const checkedEvents = rsvpForm.querySelectorAll('input[type="checkbox"]:checked');
             let eventsValue = [];
             checkedEvents.forEach(checkbox => {
@@ -55,6 +53,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // Event Tab Logic
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.dataset.tab;
+
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                if (content.id === targetTab) {
+                    content.classList.add('active');
+                }
+            });
+        });
+    });
+
 
     // --- DESKTOP-ONLY LOGIC ---
     if (!isMobile) {
