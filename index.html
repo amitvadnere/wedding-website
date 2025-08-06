@@ -13,53 +13,48 @@
 <body>
 
     <div id="main-container">
-        <!-- PAGE 1: HOME -->
+        <!-- PAGE 1: COMBINED HOME & STORY -->
         <section id="page-1" class="page page-home">
-            <div class="text-center content-wrapper">
-                <h2 class="text-2xl tracking-widest text-gray-300">Save The Date</h2>
-                <h1 class="font-script text-8xl md:text-9xl my-4 text-white">Amit & Aishwarya</h1>
-                <h3 class="text-2xl font-semibold tracking-wider text-[var(--primary-gold)]">December 2, 2025</h3>
+            <div class="content-wrapper grid md:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
+                <div class="home-photo-container">
+                    <!-- USER'S NOTE: Replace with your couple's photo -->
+                    <img src="photos/couple.jpg" alt="Amit and Aishwarya" class="story-photo">
+                </div>
+                <div class="text-center md:text-left">
+                    <h2 class="text-2xl tracking-widest text-gray-300">Save The Date</h2>
+                    <h1 class="font-script text-8xl md:text-9xl my-4 text-white">Amit & Aishwarya</h1>
+                    <h3 class="text-2xl font-semibold tracking-wider text-[var(--primary-accent)]">December 2, 2025</h3>
+                    <p class="mt-8 text-sm text-white/80 leading-relaxed max-w-md mx-auto md:mx-0">
+                        From shared glances to a lifetime of promises, our journey has been nothing short of magical. What started as a simple friendship blossomed into a love that feels like home. We can't wait to start our happily-ever-after with you!
+                    </p>
+                </div>
                 <div class="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-pulse flex items-center gap-2 text-sm">
-                    Scroll to begin our story
+                    Scroll for details
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 icon-arrow-right" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 icon-arrow-down hidden" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                 </div>
             </div>
         </section>
 
-        <!-- PAGE 2: OUR STORY TOGETHER -->
-        <section id="page-2" class="page page-couple gold-pattern-bg">
-            <div class="content-wrapper text-center max-w-2xl mx-auto">
-                <div class="story-photo-container">
-                    <!-- USER'S NOTE: Replace with your couple's photo -->
-                    <img src="photos/couple.jpg" alt="Amit and Aishwarya" class="story-photo">
-                </div>
-                <h2 class="font-script text-6xl md:text-7xl text-[var(--primary-navy)] mt-10">Amit & Aishwarya</h2>
-                <p class="mt-6 text-sm text-gray-600 leading-relaxed">
-                    From shared glances to a lifetime of promises, our journey has been nothing short of magical. What started as a simple friendship blossomed into a love that feels like home. We can't wait to start our happily-ever-after, and we are so excited to celebrate it with you!
-                </p>
-            </div>
-        </section>
-
-        <!-- PAGE 3: EVENTS -->
-        <section id="page-3" class="page page-events gold-pattern-bg">
+        <!-- PAGE 2: EVENTS -->
+        <section id="page-2" class="page page-events gold-pattern-bg">
             <div class="text-center content-wrapper">
-                <h2 class="text-5xl text-[var(--primary-navy)] mb-12">The Festivities</h2>
+                <h2 class="text-5xl text-[var(--text-color)] mb-12">The Festivities</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <div class="event-card rounded-xl p-8">
-                        <h3 class="text-3xl text-[var(--primary-navy)] mb-2">Sangeet & Engagement</h3>
+                        <h3 class="text-3xl text-[var(--text-color)] mb-2">Sangeet & Engagement</h3>
                         <p class="font-semibold text-gray-700 text-sm">1st December 2025</p>
                         <p class="text-gray-500 my-4 text-sm">A night of music & dance as we kick off the festivities!</p>
                         <p class="font-semibold text-gray-800">Mumbai</p>
                     </div>
                     <div class="event-card rounded-xl p-8">
-                        <h3 class="text-3xl text-[var(--primary-navy)] mb-2">The Wedding</h3>
+                        <h3 class="text-3xl text-[var(--text-color)] mb-2">The Wedding</h3>
                         <p class="font-semibold text-gray-700 text-sm">2nd December 2025</p>
                         <p class="text-gray-500 my-4 text-sm">Witness our sacred union during the Mangal Ashtak ceremony.</p>
                         <p class="font-semibold text-gray-800">Mumbai</p>
                     </div>
                     <div class="event-card rounded-xl p-8">
-                        <h3 class="text-3xl text-[var(--primary-navy)] mb-2">Grand Reception</h3>
+                        <h3 class="text-3xl text-[var(--text-color)] mb-2">Grand Reception</h3>
                         <p class="font-semibold text-gray-700 text-sm">6th December 2025</p>
                         <p class="text-gray-500 my-4 text-sm">Join us for a final, magnificent feast in our honor.</p>
                         <p class="font-semibold text-gray-800">Indore</p>
@@ -68,10 +63,10 @@
             </div>
         </section>
 
-        <!-- PAGE 4: RSVP -->
-        <section id="page-4" class="page page-rsvp gold-pattern-bg">
+        <!-- PAGE 3: RSVP -->
+        <section id="page-3" class="page page-rsvp gold-pattern-bg">
             <div class="text-center content-wrapper max-w-xl w-full">
-                <h2 class="text-5xl text-[var(--primary-navy)] mb-4">Kindly RSVP</h2>
+                <h2 class="text-5xl text-[var(--text-color)] mb-4">Kindly RSVP</h2>
                 <p class="text-gray-600 mb-8">Please honor us with your reply by November 1st, 2025.</p>
                 <form id="rsvp-form" class="text-left w-full couple-card p-8 rounded-xl">
                     <div id="form-content">
@@ -86,25 +81,25 @@
                         <div class="mb-6">
                             <label class="block text-gray-700 font-medium mb-2 text-sm">Events You Will Grace</label>
                             <div class="space-y-2 mt-3">
-                                <div class="flex items-center"><input type="checkbox" id="sangeet" name="event" value="Sangeet" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="sangeet" class="ml-3 text-gray-700 text-sm">Sangeet & Engagement</label></div>
-                                <div class="flex items-center"><input type="checkbox" id="wedding" name="event" value="Wedding" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="wedding" class="ml-3 text-gray-700 text-sm">The Wedding</label></div>
-                                <div class="flex items-center"><input type="checkbox" id="reception" name="event" value="Reception" class="h-4 w-4 text-[var(--primary-navy)] border-gray-400 rounded focus:ring-[var(--primary-navy)]"><label for="reception" class="ml-3 text-gray-700 text-sm">Indore Reception</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="sangeet" name="event" value="Sangeet" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="sangeet" class="ml-3 text-gray-700 text-sm">Sangeet & Engagement</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="wedding" name="event" value="Wedding" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="wedding" class="ml-3 text-gray-700 text-sm">The Wedding</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="reception" name="event" value="Reception" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="reception" class="ml-3 text-gray-700 text-sm">Indore Reception</label></div>
                             </div>
                         </div>
-                        <button type="submit" class="w-full bg-[var(--primary-navy)] text-white font-semibold tracking-wider py-3 px-4 rounded-md hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl">SUBMIT RSVP</button>
+                        <button type="submit" class="w-full bg-[var(--primary-dark)] text-white font-semibold tracking-wider py-3 px-4 rounded-md hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl">SUBMIT RSVP</button>
                     </div>
                      <div id="rsvp-confirmation" class="hidden text-center py-8">
-                        <h3 class="font-script text-5xl text-[var(--primary-navy)]">Thank You!</h3>
+                        <h3 class="font-script text-5xl text-[var(--text-color)]">Thank You!</h3>
                         <p class="mt-2">Your reply has been received.</p>
                     </div>
                 </form>
             </div>
         </section>
         
-        <!-- PAGE 5: GALLERY -->
-        <section id="page-5" class="page page-gallery gold-pattern-bg">
+        <!-- PAGE 4: GALLERY -->
+        <section id="page-4" class="page page-gallery gold-pattern-bg">
             <div class="text-center content-wrapper">
-                 <h2 class="text-5xl text-[var(--primary-navy)] mb-12">Glimpses of Our Journey</h2>
+                 <h2 class="text-5xl text-[var(--text-color)] mb-12">Glimpses of Our Journey</h2>
                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl">
                     <img src="photos/gallery-1.jpg" alt="Gallery image 1" class="rounded-lg shadow-lg aspect-square object-cover event-card p-2">
                     <img src="photos/gallery-2.jpg" alt="Gallery image 2" class="rounded-lg shadow-lg aspect-square object-cover event-card p-2">

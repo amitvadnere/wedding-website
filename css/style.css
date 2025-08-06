@@ -1,6 +1,5 @@
 /* Base styles for both desktop and mobile */
 :root {
-    /* New color palette */
     --bg-color: #F9F7F3; /* Antique White */
     --primary-dark: #5F7F60; /* Fern Green */
     --primary-accent: #A8C1A1; /* Eucalyptus Green */
@@ -45,13 +44,13 @@ h1, h2, h3 {
     box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
 }
 
-/* New Styles for the Story Section */
-.story-photo-container {
+/* New Styles for the combined Home Section */
+.home-photo-container {
     width: 100%;
-    max-width: 450px; /* Control the max size of the photo */
+    max-width: 400px;
     margin: 0 auto;
-    aspect-ratio: 3 / 4; /* A nice portrait aspect ratio */
-    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
+    aspect-ratio: 3 / 4;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
     border-radius: 0.5rem;
     overflow: hidden;
 }
@@ -71,7 +70,7 @@ h1, h2, h3 {
     }
 
     #main-container {
-        width: 500vw; /* 100vw per section (5 sections) */
+        width: 400vw; /* 100vw per section (4 sections) */
         height: 100vh;
         display: flex;
         will-change: transform;
@@ -103,7 +102,7 @@ h1, h2, h3 {
     }
 
     .page-home { background-color: var(--primary-dark); color: var(--bg-color); }
-    .page-couple, .page-events, .page-rsvp, .page-gallery { background-color: var(--bg-color); }
+    .page-events, .page-rsvp, .page-gallery { background-color: var(--bg-color); }
 
     .couple-card:hover, .event-card:hover {
         background: rgba(206, 221, 200, 0.7); /* Sage Mist hover */
@@ -132,7 +131,6 @@ h1, h2, h3 {
         transition: all 0.4s ease;
     }
     
-    .page-couple.active ~ #nav-dots .nav-dot,
     .page-events.active ~ #nav-dots .nav-dot,
     .page-rsvp.active ~ #nav-dots .nav-dot,
     .page-gallery.active ~ #nav-dots .nav-dot {
@@ -145,7 +143,6 @@ h1, h2, h3 {
         transform: scale(1.4);
     }
     
-    .page-couple.active ~ #nav-dots .nav-dot.active,
     .page-events.active ~ #nav-dots .nav-dot.active,
     .page-rsvp.active ~ #nav-dots .nav-dot.active,
     .page-gallery.active ~ #nav-dots .nav-dot.active {
@@ -187,7 +184,7 @@ h1, h2, h3 {
         color: var(--bg-color);
         background-color: var(--primary-dark);
     }
-    .page-couple, .page-events, .page-rsvp, .page-gallery {
+    .page-events, .page-rsvp, .page-gallery {
         background-color: var(--bg-color);
     }
 
@@ -200,6 +197,10 @@ h1, h2, h3 {
     }
     .font-script.text-6xl {
         font-size: 3.5rem; /* Adjust script font on mobile */
+    }
+
+    .home-photo-container {
+        margin-bottom: 3rem;
     }
 
     /* Force grids to stack */
