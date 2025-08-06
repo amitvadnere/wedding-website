@@ -183,13 +183,15 @@ h1, h2, h3 {
     .page-home {
         color: var(--bg-color);
         background-color: var(--primary-dark);
+        padding-top: 6rem; /* Increased padding for more space */
+        padding-bottom: 6rem;
     }
     .page-events, .page-rsvp, .page-gallery {
         background-color: var(--bg-color);
     }
 
     .text-8xl { 
-        font-size: 3rem; /* Reduced font size for mobile */
+        font-size: 2.75rem; /* Further reduced font size for mobile */
         line-height: 1.1; /* Tighter line height for the large font */
     }
     .text-5xl { 
