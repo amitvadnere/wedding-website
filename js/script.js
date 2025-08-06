@@ -6,27 +6,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (rsvpForm) {
         const notAttendingCheckbox = document.getElementById('not-attending');
         const eventCheckboxes = rsvpForm.querySelectorAll('.event-checkbox');
-        const rsvpInputs = rsvpForm.querySelectorAll('input[name="name"], input[name="guests"]');
+        const guestsInput = rsvpForm.querySelector('input[name="guests"]');
 
-        // When "Not Attending" is checked, disable other event checkboxes and inputs
+        // When "Not Attending" is checked, disable other event checkboxes and guest count
         notAttendingCheckbox.addEventListener('change', () => {
-            if (notAttendingCheckbox.checked) {
-                eventCheckboxes.forEach(checkbox => {
-                    checkbox.checked = false;
-                    checkbox.disabled = true;
-                });
-                rsvpInputs.forEach(input => {
-                    input.disabled = true;
-                    input.required = false;
-                });
+            const isChecked = notAttendingCheckbox.checked;
+            
+            // Disable/enable event checkboxes
+            eventCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+                checkbox.disabled = isChecked;
+            });
+
+            // Disable/enable guest input, but keep name input active
+            guestsInput.disabled = isChecked;
+            if (isChecked) {
+                guestsInput.value = '0'; // Set guests to 0 if not attending
+                guestsInput.required = false;
             } else {
-                eventCheckboxes.forEach(checkbox => {
-                    checkbox.disabled = false;
-                });
-                 rsvpInputs.forEach(input => {
-                    input.disabled = false;
-                    input.required = true;
-                });
+                guestsInput.value = '1';
+                guestsInput.required = true;
             }
         });
 
