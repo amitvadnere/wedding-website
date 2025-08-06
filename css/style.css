@@ -199,11 +199,19 @@ h1, h2, h3 {
         font-size: 3.5rem; /* Adjust script font on mobile */
     }
 
+    /* Stack the home page content on mobile */
+    .page-home .content-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
     .home-photo-container {
         margin-bottom: 3rem;
     }
+    .home-text-content {
+        text-align: center;
+    }
 
-    /* Force grids to stack */
+    /* Force other grids to stack */
     .md\:grid-cols-2, .md\:grid-cols-3, .md\:grid-cols-4 {
         grid-template-columns: 1fr;
     }
