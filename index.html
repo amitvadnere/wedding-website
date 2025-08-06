@@ -94,12 +94,17 @@
                                 <div class="mb-6">
                                     <label class="block text-gray-700 font-medium mb-2 text-sm">Events You Will Grace</label>
                                     <div class="space-y-2 mt-3">
-                                        <div class="flex items-center"><input type="checkbox" id="sangeet-check" name="event" value="Sangeet" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="sangeet-check" class="ml-3 text-gray-700 text-sm">Sangeet & Engagement</label></div>
-                                        <div class="flex items-center"><input type="checkbox" id="wedding-check" name="event" value="Wedding" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="wedding-check" class="ml-3 text-gray-700 text-sm">The Wedding</label></div>
-                                        <div class="flex items-center"><input type="checkbox" id="reception-check" name="event" value="Reception" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="reception-check" class="ml-3 text-gray-700 text-sm">Indore Reception</label></div>
+                                        <div class="flex items-center"><input type="checkbox" id="sangeet-check" name="event" value="Sangeet" class="event-checkbox h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="sangeet-check" class="ml-3 text-gray-700 text-sm">Sangeet & Engagement</label></div>
+                                        <div class="flex items-center"><input type="checkbox" id="wedding-check" name="event" value="Wedding" class="event-checkbox h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="wedding-check" class="ml-3 text-gray-700 text-sm">The Wedding</label></div>
+                                        <div class="flex items-center"><input type="checkbox" id="reception-check" name="event" value="Reception" class="event-checkbox h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="reception-check" class="ml-3 text-gray-700 text-sm">Indore Reception</label></div>
                                     </div>
                                 </div>
-                                <button type="submit" class="w-full bg-[var(--primary-dark)] text-white font-semibold tracking-wider py-3 px-4 rounded-md hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl">SUBMIT RSVP</button>
+                                <hr class="my-6 border-gray-300">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="not-attending" name="not-attending" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]">
+                                    <label for="not-attending" class="ml-3 text-gray-700 text-sm">Sorry, we are unable to attend</label>
+                                </div>
+                                <button type="submit" class="w-full bg-[var(--primary-dark)] text-white font-semibold tracking-wider py-3 px-4 rounded-md hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl mt-6">SUBMIT RSVP</button>
                             </div>
                              <div id="rsvp-confirmation" class="hidden text-center py-8">
                                 <h3 class="font-script text-5xl text-[var(--text-color)]">Thank You!</h3>

@@ -4,6 +4,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- SHARED LOGIC ---
     const rsvpForm = document.getElementById('rsvp-form');
     if (rsvpForm) {
+        const notAttendingCheckbox = document.getElementById('not-attending');
+        const eventCheckboxes = rsvpForm.querySelectorAll('.event-checkbox');
+        const rsvpInputs = rsvpForm.querySelectorAll('input[name="name"], input[name="guests"]');
+
+        // When "Not Attending" is checked, disable other event checkboxes and inputs
+        notAttendingCheckbox.addEventListener('change', () => {
+            if (notAttendingCheckbox.checked) {
+                eventCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                    checkbox.disabled = true;
+                });
+                rsvpInputs.forEach(input => {
+                    input.disabled = true;
+                    input.required = false;
+                });
+            } else {
+                eventCheckboxes.forEach(checkbox => {
+                    checkbox.disabled = false;
+                });
+                 rsvpInputs.forEach(input => {
+                    input.disabled = false;
+                    input.required = true;
+                });
+            }
+        });
+
+        // When any event is checked, disable the "Not Attending" checkbox
+        eventCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const anyEventChecked = Array.from(eventCheckboxes).some(cb => cb.checked);
+                if (anyEventChecked) {
+                    notAttendingCheckbox.checked = false;
+                    notAttendingCheckbox.disabled = true;
+                } else {
+                    notAttendingCheckbox.disabled = false;
+                }
+            });
+        });
+
         rsvpForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const submitButton = rsvpForm.querySelector('button[type="submit"]');
@@ -19,16 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 </svg>
                 SUBMITTING...`;
             
-            const scriptURL = atob(CONFIG.ENCODED_URL); 
+            const scriptURL = atob(config.encodedUrl); 
             const formData = new FormData(rsvpForm);
             
-            const checkedEvents = rsvpForm.querySelectorAll('input[type="checkbox"]:checked');
+            const checkedEvents = rsvpForm.querySelectorAll('input[name="event"]:checked');
             let eventsValue = [];
             checkedEvents.forEach(checkbox => {
-                eventsValue.push(checkbox.parentElement.querySelector('label').textContent);
+                eventsValue.push(checkbox.value);
             });
             formData.append('events', eventsValue.join(', '));
-
+            
+            // Add attending status
+            formData.append('attending', notAttendingCheckbox.checked ? 'No' : 'Yes');
 
             fetch(scriptURL, { method: 'POST', body: formData})
                 .then(response => {
@@ -97,46 +138,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateActiveState = () => {
             const scrollLeft = currentPage * window.innerWidth;
             container.style.transform = `translateX(-${scrollLeft}px)`;
-
-            pages.forEach((page, index) => {
-                page.classList.toggle('active', index === currentPage);
-            });
-            navDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentPage);
-            });
+            pages.forEach((page, index) => page.classList.toggle('active', index === currentPage));
+            navDots.forEach((dot, index) => dot.classList.toggle('active', index === currentPage));
         };
 
         const changePage = (direction) => {
             if (isScrolling) return;
             isScrolling = true;
-
             if (direction === 'next') {
                 currentPage = Math.min(pageCount - 1, currentPage + 1);
             } else if (direction === 'prev') {
                 currentPage = Math.max(0, currentPage - 1);
             }
-            
             updateActiveState();
-
-            setTimeout(() => {
-                isScrolling = false;
-            }, scrollCooldown);
+            setTimeout(() => { isScrolling = false; }, scrollCooldown);
         };
 
         const handleScroll = (event) => {
-            if (event.deltaY > 0) {
-                changePage('next');
-            } else {
-                changePage('prev');
-            }
+            if (event.deltaY > 0) changePage('next');
+            else changePage('prev');
         };
 
         const handleKeyDown = (event) => {
-            if (event.key === 'ArrowRight') {
-                changePage('next');
-            } else if (event.key === 'ArrowLeft') {
-                changePage('prev');
-            }
+            if (event.key === 'ArrowRight') changePage('next');
+            else if (event.key === 'ArrowLeft') changePage('prev');
         };
         
         const handleNavClick = (event) => {
@@ -146,9 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
              }
         };
         
-        // Initial state
         updateActiveState();
-        
         window.addEventListener('wheel', handleScroll);
         window.addEventListener('keydown', handleKeyDown);
         navDotsContainer.addEventListener('click', handleNavClick);
