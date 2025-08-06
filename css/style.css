@@ -52,7 +52,7 @@ h1, h2, h3 {
     aspect-ratio: 3 / 4;
     overflow: hidden;
     /* This creates a much softer, more feathered edge effect */
-    mask-image: radial-gradient(circle, black 30%, transparent 100%);
+    mask-image: radial-gradient(circle, black 50%, transparent 85%);
 }
 .story-photo {
     width: 100%;
@@ -100,6 +100,11 @@ h1, h2, h3 {
     }
     .content-wrapper > * {
         transition-delay: 0.3s;
+    }
+    
+    /* Increase photo size on larger screens */
+    .home-photo-container {
+        max-width: 500px;
     }
 
     .page-home { background-color: var(--primary-dark); color: var(--bg-color); }
