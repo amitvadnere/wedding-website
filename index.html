@@ -17,12 +17,20 @@
         <section id="page-1" class="page page-home">
             <div class="content-wrapper grid md:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
                 <div class="home-photo-container">
-                    <!-- SVG for the brush stroke effect -->
-                    <svg width="0" height="0" style="position:absolute">
+                    <!-- SVG Filter Definition -->
+                    <svg width="0" height="0" style="position:absolute;">
                         <defs>
-                            <filter id="brush-stroke">
-                                <feTurbulence type="fractalNoise" baseFrequency="0.05 0.02" numOctaves="3" result="noise" />
-                                <feDisplacementMap in="SourceGraphic" in2="noise" scale="15" xChannelSelector="R" yChannelSelector="G" />
+                            <filter id="shape-border">
+                                <!-- Create a solid white version of the image -->
+                                <feColorMatrix type="matrix" values="0 0 0 0 1
+                                                                      0 0 0 0 1
+                                                                      0 0 0 0 1
+                                                                      0 0 0 1 0" result="white-out"/>
+                                <!-- Slightly enlarge the white shape to form a border -->
+                                <feMorphology in="white-out" operator="dilate" radius="4" result="border"/>
+                                <!-- Add a sketchy, hand-drawn texture -->
+                                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="turbulence"/>
+                                <feDisplacementMap in="border" in2="turbulence" scale="8" xChannelSelector="R" yChannelSelector="G"/>
                             </filter>
                         </defs>
                     </svg>
@@ -37,6 +45,7 @@
                     <p class="mt-8 text-sm text-white/80 leading-relaxed max-w-md mx-auto md:mx-0">
                         From shared glances to a lifetime of promises, our journey has been nothing short of magical. What started as a simple friendship blossomed into a love that feels like home. We can't wait to start our happily-ever-after with you!
                     </p>
+                    <p class="mt-6 text-lg text-white/70 tracking-widest">#amivariya</p>
                 </div>
             </div>
             <!-- Scroll indicator moved outside the grid for proper positioning -->
