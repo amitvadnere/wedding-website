@@ -17,12 +17,11 @@
         <section id="page-1" class="page page-home">
             <div class="content-wrapper grid md:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
                 <div class="home-photo-container">
-                    <!-- The foliage frame sits behind the couple's photo -->
                     <div class="foliage-frame">
                          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="#A8C1A1" d="M48.2,-54.2C61.8,-42.3,71.7,-25.2,74.1,-6.8C76.5,11.6,71.4,30,60.2,43.5C49,57.1,31.7,65.8,14.6,69.5C-2.5,73.2,-19.4,71.8,-34.5,64.4C-49.6,57,-62.9,43.6,-69.7,27.7C-76.5,11.8,-76.8,-6.6,-70.2,-21.8C-63.6,-37,-50.2,-49,-36.1,-58.5C-22,-68,-7.2,-75,8.9,-75.7C25,-76.4,50,-71.8,48.2,-54.2Z" transform="translate(100 100)" opacity="0.1"></path></svg>
                     </div>
                     <!-- USER'S NOTE: Replace with your transparent PNG couple's photo -->
-                    <img src="photos/couple_2.png" alt="Amit and Aishwarya" class="story-photo">
+                    <img src="photos/couple.png" alt="Amit and Aishwarya" class="story-photo">
                 </div>
                 <div class="home-text-content text-center md:text-left">
                     <h2 class="text-2xl tracking-widest text-gray-300">Save The Date</h2>
@@ -41,10 +40,11 @@
             </div>
         </section>
 
-        <!-- PAGE 2: EVENTS -->
-        <section id="page-2" class="page page-events gold-pattern-bg">
+        <!-- PAGE 2: EVENTS & RSVP -->
+        <section id="page-2" class="page page-events-rsvp gold-pattern-bg">
             <div class="text-center content-wrapper">
-                <h2 class="text-5xl text-[var(--text-color)] mb-12">The Festivities</h2>
+                <h2 class="text-5xl text-[var(--text-color)] mb-12">The Festivities & RSVP</h2>
+                <!-- Events -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <div class="event-card rounded-xl p-8">
                         <h3 class="text-3xl text-[var(--text-color)] mb-2">Sangeet & Engagement</h3>
@@ -65,44 +65,40 @@
                         <p class="font-semibold text-gray-800">Indore</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- PAGE 3: RSVP -->
-        <section id="page-3" class="page page-rsvp gold-pattern-bg">
-            <div class="text-center content-wrapper max-w-xl w-full">
-                <h2 class="text-5xl text-[var(--text-color)] mb-4">Kindly RSVP</h2>
-                <p class="text-gray-600 mb-8">Please honor us with your reply by November 1st, 2025.</p>
-                <form id="rsvp-form" class="text-left w-full couple-card p-8 rounded-xl">
-                    <div id="form-content">
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 font-medium mb-2 text-sm">Your Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none bg-white/50 text-sm" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="guests" class="block text-gray-700 font-medium mb-2 text-sm">Number of Guests</label>
-                            <input type="number" id="guests" name="guests" min="1" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none bg-white/50 text-sm" required>
-                        </div>
-                        <div class="mb-6">
-                            <label class="block text-gray-700 font-medium mb-2 text-sm">Events You Will Grace</label>
-                            <div class="space-y-2 mt-3">
-                                <div class="flex items-center"><input type="checkbox" id="sangeet" name="event" value="Sangeet" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="sangeet" class="ml-3 text-gray-700 text-sm">Sangeet & Engagement</label></div>
-                                <div class="flex items-center"><input type="checkbox" id="wedding" name="event" value="Wedding" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="wedding" class="ml-3 text-gray-700 text-sm">The Wedding</label></div>
-                                <div class="flex items-center"><input type="checkbox" id="reception" name="event" value="Reception" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="reception" class="ml-3 text-gray-700 text-sm">Indore Reception</label></div>
+                <!-- RSVP Form -->
+                <div class="max-w-xl w-full mx-auto mt-16">
+                    <form id="rsvp-form" class="text-left w-full couple-card p-8 rounded-xl">
+                        <h3 class="text-3xl text-center text-[var(--text-color)] mb-6">Kindly RSVP</h3>
+                        <div id="form-content">
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 font-medium mb-2 text-sm">Your Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none bg-white/50 text-sm" required>
                             </div>
+                            <div class="mb-4">
+                                <label for="guests" class="block text-gray-700 font-medium mb-2 text-sm">Number of Guests</label>
+                                <input type="number" id="guests" name="guests" min="1" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none bg-white/50 text-sm" required>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 font-medium mb-2 text-sm">Events You Will Grace</label>
+                                <div class="space-y-2 mt-3">
+                                    <div class="flex items-center"><input type="checkbox" id="sangeet" name="event" value="Sangeet" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="sangeet" class="ml-3 text-gray-700 text-sm">Sangeet & Engagement</label></div>
+                                    <div class="flex items-center"><input type="checkbox" id="wedding" name="event" value="Wedding" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="wedding" class="ml-3 text-gray-700 text-sm">The Wedding</label></div>
+                                    <div class="flex items-center"><input type="checkbox" id="reception" name="event" value="Reception" class="h-4 w-4 text-[var(--primary-dark)] border-gray-400 rounded focus:ring-[var(--primary-dark)]"><label for="reception" class="ml-3 text-gray-700 text-sm">Indore Reception</label></div>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full bg-[var(--primary-dark)] text-white font-semibold tracking-wider py-3 px-4 rounded-md hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl">SUBMIT RSVP</button>
                         </div>
-                        <button type="submit" class="w-full bg-[var(--primary-dark)] text-white font-semibold tracking-wider py-3 px-4 rounded-md hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl">SUBMIT RSVP</button>
-                    </div>
-                     <div id="rsvp-confirmation" class="hidden text-center py-8">
-                        <h3 class="font-script text-5xl text-[var(--text-color)]">Thank You!</h3>
-                        <p class="mt-2">Your reply has been received.</p>
-                    </div>
-                </form>
+                         <div id="rsvp-confirmation" class="hidden text-center py-8">
+                            <h3 class="font-script text-5xl text-[var(--text-color)]">Thank You!</h3>
+                            <p class="mt-2">Your reply has been received.</p>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
         
-        <!-- PAGE 4: GALLERY -->
-        <section id="page-4" class="page page-gallery gold-pattern-bg">
+        <!-- PAGE 3: GALLERY -->
+        <section id="page-3" class="page page-gallery gold-pattern-bg">
             <div class="text-center content-wrapper">
                  <h2 class="text-5xl text-[var(--text-color)] mb-12">Glimpses of Our Journey</h2>
                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl">

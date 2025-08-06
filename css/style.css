@@ -58,7 +58,11 @@ h1, h2, h3 {
     object-fit: contain; /* Use contain to ensure the whole couple is visible */
     position: relative;
     z-index: 2; /* Photo is in front of the foliage */
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+    /* New sketchy border effect using drop-shadow */
+    filter: drop-shadow(2px 2px 0px white) 
+            drop-shadow(-2px -2px 0px white) 
+            drop-shadow(2px -2px 0px white) 
+            drop-shadow(-2px 2px 0px white);
 }
 .foliage-frame {
     position: absolute;
@@ -80,7 +84,7 @@ h1, h2, h3 {
     }
 
     #main-container {
-        width: 400vw; /* 100vw per section (4 sections) */
+        width: 300vw; /* 100vw per section (3 sections) */
         height: 100vh;
         display: flex;
         will-change: transform;
@@ -114,10 +118,9 @@ h1, h2, h3 {
     .page-home { 
         background-color: var(--primary-dark); 
         color: var(--bg-color); 
-        /* Soft spotlight effect */
         background-image: radial-gradient(circle at 50% 50%, #6F8F70, var(--primary-dark));
     }
-    .page-events, .page-rsvp, .page-gallery { background-color: var(--bg-color); }
+    .page-events-rsvp, .page-gallery { background-color: var(--bg-color); }
 
     .couple-card:hover, .event-card:hover {
         background: rgba(206, 221, 200, 0.7); /* Sage Mist hover */
@@ -146,8 +149,7 @@ h1, h2, h3 {
         transition: all 0.4s ease;
     }
     
-    .page-events.active ~ #nav-dots .nav-dot,
-    .page-rsvp.active ~ #nav-dots .nav-dot,
+    .page-events-rsvp.active ~ #nav-dots .nav-dot,
     .page-gallery.active ~ #nav-dots .nav-dot {
         background-color: rgba(0,0,0,0.1);
         border-color: rgba(0,0,0,0.3);
@@ -158,8 +160,7 @@ h1, h2, h3 {
         transform: scale(1.4);
     }
     
-    .page-events.active ~ #nav-dots .nav-dot.active,
-    .page-rsvp.active ~ #nav-dots .nav-dot.active,
+    .page-events-rsvp.active ~ #nav-dots .nav-dot.active,
     .page-gallery.active ~ #nav-dots .nav-dot.active {
          background-color: var(--primary-accent) !important;
          border-color: var(--primary-accent) !important;
@@ -201,7 +202,7 @@ h1, h2, h3 {
         padding-top: 6rem; /* Increased padding for more space */
         padding-bottom: 6rem;
     }
-    .page-events, .page-rsvp, .page-gallery {
+    .page-events-rsvp, .page-gallery {
         background-color: var(--bg-color);
     }
 
