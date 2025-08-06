@@ -51,8 +51,8 @@ h1, h2, h3 {
     margin: 0 auto;
     aspect-ratio: 3 / 4;
     overflow: hidden;
-    /* This creates the soft, faded edge effect */
-    mask-image: radial-gradient(circle, black 60%, transparent 100%);
+    /* This creates a much softer, more feathered edge effect */
+    mask-image: radial-gradient(circle, black 30%, transparent 100%);
 }
 .story-photo {
     width: 100%;
