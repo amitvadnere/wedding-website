@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </svg>
                 SUBMITTING...`;
             
-            const scriptURL = atob(config.encodedUrl); 
+            const scriptURL = atob(CONFIG.encodedUrl); 
             const formData = new FormData(rsvpForm);
             
             const checkedEvents = rsvpForm.querySelectorAll('input[type="checkbox"]:checked');
